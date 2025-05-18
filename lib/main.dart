@@ -1,3 +1,214 @@
+/*import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const ReviewStepOne(),
+    );
+  }
+}
+
+class ReviewStepOne extends StatefulWidget {
+  const ReviewStepOne({super.key});
+
+  @override
+  State<ReviewStepOne> createState() => _ReviewStepOneState();
+}
+
+class _ReviewStepOneState extends State<ReviewStepOne> {
+  String selectedShop = '';
+
+  final List<String> shopCategories = [
+    'Electrical Shops',
+    'Books Shop',
+    'Hardware Shops',
+  ];
+
+  final List<String> foodCategories = [
+    'Canteens',
+    'Juice Corner',
+    'Restaurants',
+  ];
+
+  Widget buildCategoryButton(String title) {
+    final isSelected = selectedShop == title;
+    return GestureDetector(
+      onTap: () => setState(() => selectedShop = title),
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey.shade300),
+          borderRadius: BorderRadius.circular(12),
+          color: isSelected ? const Color(0xFF7B3F00) : Colors.white,
+        ),
+        child: Row(
+          children: [
+            Icon(Icons.storefront,
+                color: isSelected ? Colors.white : Colors.grey),
+            const SizedBox(width: 12),
+            Text(
+              title,
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.black,
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        leading: const BackButton(color: Colors.black),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text("Write your reviews",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 4),
+            Text("Step 1 / 2",
+                style: TextStyle(
+                    color: Colors.brown.shade700,
+                    fontWeight: FontWeight.bold)),
+            const SizedBox(height: 16),
+            const Text("Select the space you're facing problem in your city.",
+                style: TextStyle(fontSize: 16)),
+            const SizedBox(height: 24),
+            const Text("Shops", style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 10),
+            ...shopCategories.map(buildCategoryButton),
+            const SizedBox(height: 20),
+            const Text("Food Area",
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 10),
+            ...foodCategories.map(buildCategoryButton),
+            const Spacer(),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF7B3F00),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ReviewStepTwo()),
+                  );
+                },
+                child: const Text("Next",
+                    style: TextStyle(fontSize: 16, color: Colors.white)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ReviewStepTwo extends StatelessWidget {
+  const ReviewStepTwo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        leading: const BackButton(color: Colors.black),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+            const Text("Write your reviews",
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 4),
+        Text("Step 2 / 2",
+            style: TextStyle(
+                color: Colors.brown.shade700,
+                fontWeight: FontWeight.bold)),
+        const SizedBox(height: 24),
+        const Text("Give info about the issue you're facing",
+            style: TextStyle(fontSize: 16)),
+        const SizedBox(height: 20),
+        const TextField(
+          decoration: InputDecoration(
+            labelText: 'Short title',
+            hintText: 'e.g. No one is giving Luxor pens',
+            border: OutlineInputBorder(),
+          ),
+        ),
+        const SizedBox(height: 20),
+        const TextField(
+          maxLines: 4,
+          decoration: InputDecoration(
+              labelText: 'Describe your issue',
+              hintText:
+              "Tell us exactly what's wrong so it can be fixed faster.",
+              border: OutlineInputBorder(),
+        ),
+      ),
+      const SizedBox(height: 20),
+      Row(
+        children: const [
+          Icon(Icons.add_a_photo, color: Colors.brown),
+          SizedBox(width: 8),
+          Text("Add photos",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.brown))
+        ],
+      ),
+      const Spacer(),
+      SizedBox(
+        width: double.infinity,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF7B3F00),
+            padding: EdgeInsets.symmetric(vertical: 16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          onPressed: () {
+            // Submit logic here
+          },
+          child: const Text("Submit Complaint",
+              style: TextStyle(fontSize: 16, color: Colors.white)),
+        ),
+      ),
+      ],
+    ),
+    ),
+    );
+  }
+}
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,116 +218,364 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Review App',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primarySwatch: Colors.brown,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const StepOneScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class StepOneScreen extends StatelessWidget {
+  const StepOneScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    List<String> shopOptions = [
+      '🔌 Electrical Shops',
+      '📚 Books Shop',
+      '🔧 Hardware Shops',
+    ];
+
+    List<String> foodOptions = [
+      '🍽️ Canteens',
+      '🧃 Juice Corner',
+      '🍴 Restaurants',
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: const Text('Write your reviews'),
+        leading: const BackButton(),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text("Step 1 / 2", style: TextStyle(color: Colors.brown)),
+            const SizedBox(height: 8),
+            const Text(
+              'Select the space you\'re facing problem in your city.',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 16),
+            const Text('Shops', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            ...shopOptions.map((option) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: OutlinedButton(
+                onPressed: () {},
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.all(16),
+                  side: const BorderSide(color: Colors.grey),
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(option),
+                ),
+              ),
+            )),
+            const SizedBox(height: 16),
+            const Text('Food Area', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            ...foodOptions.map((option) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: OutlinedButton(
+                onPressed: () {},
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.all(16),
+                  side: const BorderSide(color: Colors.grey),
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(option),
+                ),
+              ),
+            )),
+            const Spacer(),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const StepTwoScreen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.brown),
+                child: const Text("Next"),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class StepTwoScreen extends StatelessWidget {
+  const StepTwoScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: const BackButton(),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text("Step 2 / 2", style: TextStyle(color: Colors.brown)),
+            const SizedBox(height: 8),
+            const Text(
+              "Give info about the issue you're facing",
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 16),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Short title',
+                hintText: 'e.g. No one is giving Luxor pens',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            const TextField(
+              maxLines: 4,
+              decoration: InputDecoration(
+                labelText: 'Describe your issue',
+                hintText: "Tell us exactly what's wrong so it can be fixed faster.",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextButton.icon(
+              onPressed: () {},
+              icon: const Icon(Icons.add_a_photo),
+              label: const Text("Add photos"),
+            ),
+            const Spacer(),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                child: const Text("Submit Complaint"),
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}*/
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Review App',
+      theme: ThemeData(
+        primarySwatch: Colors.brown,
+      ),
+      home: const StepOneScreen(),
     );
   }
 }
+
+class StepOneScreen extends StatefulWidget {
+  const StepOneScreen({super.key});
+
+  @override
+  State<StepOneScreen> createState() => _StepOneScreenState();
+}
+
+class _StepOneScreenState extends State<StepOneScreen> {
+  String? selectedOption;
+
+  final List<String> shopOptions = [
+    '🔌 Electrical Shops',
+    '📚 Books Shop',
+    '🔧 Hardware Shops',
+  ];
+
+  final List<String> foodOptions = [
+    '🍽️ Canteens',
+    '🧃 Juice Corner',
+    '🍴 Restaurants',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Write your reviews'),
+        leading: const BackButton(),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text("Step 1 / 2", style: TextStyle(color: Colors.brown)),
+            const SizedBox(height: 8),
+            const Text(
+              'Select the space you\'re facing problem in your city.',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 16),
+            const Text('Shops', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            ...shopOptions.map((option) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: OutlinedButton(
+                onPressed: () {
+                  setState(() {
+                    selectedOption = option;
+                  });
+                },
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.all(16),
+                  side: const BorderSide(color: Colors.grey),
+                  backgroundColor:
+                  selectedOption == option ? Colors.brown : Colors.white,
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    option,
+                    style: TextStyle(
+                      color: selectedOption == option ? Colors.white : Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            )),
+            const SizedBox(height: 16),
+            const Text('Food Area', style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 8),
+            ...foodOptions.map((option) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: OutlinedButton(
+                onPressed: () {
+                  setState(() {
+                    selectedOption = option;
+                  });
+                },
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.all(16),
+                  side: const BorderSide(color: Colors.grey),
+                  backgroundColor:
+                  selectedOption == option ? Colors.brown : Colors.white,
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    option,
+                    style: TextStyle(
+                      color: selectedOption == option ? Colors.white : Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+            )),
+            const Spacer(),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const StepTwoScreen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.brown,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text("Next"),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class StepTwoScreen extends StatelessWidget {
+  const StepTwoScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: const BackButton(),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text("Step 2 / 2", style: TextStyle(color: Colors.brown)),
+            const SizedBox(height: 8),
+            const Text(
+              "Give info about the issue you're facing",
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 16),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Short title',
+                hintText: 'e.g. No one is giving Luxor pens',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            const TextField(
+              maxLines: 4,
+              decoration: InputDecoration(
+                labelText: 'Describe your issue',
+                hintText: "Tell us exactly what's wrong so it can be fixed faster.",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextButton.icon(
+              onPressed: () {},
+              icon: const Icon(Icons.add_a_photo),
+              label: const Text("Add photos"),
+            ),
+            const Spacer(),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.brown,
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text("Submit Complaint"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
