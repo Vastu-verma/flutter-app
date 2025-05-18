@@ -49,6 +49,7 @@ class _StepOneScreenState extends State<StepOneScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Colors.white,
       appBar: AppBar(
         title: const Text('Write your reviews'),
         leading: const BackButton(),
