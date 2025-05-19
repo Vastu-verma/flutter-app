@@ -55,9 +55,12 @@ class _StepOneScreenState extends State<StepOneScreen> {
             },
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.all(16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20), // Adjust radius as needed
+              ),
               side: const BorderSide(color: Colors.grey),
               backgroundColor:
-              selectedOption == option['label'] ?  Colors.brown : Colors.white,
+              selectedOption == option['label'] ? Color.fromRGBO(255,232,215,1) : Colors.white,
             ),
             child: Row(
               children: [
@@ -82,6 +85,7 @@ class _StepOneScreenState extends State<StepOneScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: const Text('Write your reviews'),
         leading: const BackButton(),
       ),

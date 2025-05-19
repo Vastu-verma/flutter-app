@@ -7,7 +7,10 @@ class StepTwoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         leading: const BackButton(),
       ),
       body: Padding(
@@ -38,10 +41,15 @@ class StepTwoScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
+            const Text(
+              "Describe your issue",
+              style: TextStyle(fontSize: 16),
+            ),
             const TextField(
               maxLines: 4,
+
               decoration: InputDecoration(
-                labelText: 'Describe your issue',
+
                 hintText: "Tell us exactly what's wrong so it can be fixed faster.",
                 border: OutlineInputBorder(),
               ),
@@ -49,7 +57,7 @@ class StepTwoScreen extends StatelessWidget {
             const SizedBox(height: 16),
             TextButton.icon(
               onPressed: () {},
-              icon: const Icon(Icons.add_a_photo),
+              icon: const Icon(Icons.add),
               label: const Text("Add photos"),
             ),
             const Spacer(),
@@ -70,4 +78,5 @@ class StepTwoScreen extends StatelessWidget {
     );
   }
 }
+
 
