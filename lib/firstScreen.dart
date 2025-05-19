@@ -57,7 +57,7 @@ class _StepOneScreenState extends State<StepOneScreen> {
               padding: const EdgeInsets.all(16),
               side: const BorderSide(color: Colors.grey),
               backgroundColor:
-              selectedOption == option['label'] ? const Color.fromRGBO(113, 49, 0, 1) : Colors.white,
+              selectedOption == option['label'] ?  Colors.brown : Colors.white,
             ),
             child: Row(
               children: [

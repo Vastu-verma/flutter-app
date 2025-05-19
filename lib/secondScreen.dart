@@ -15,6 +15,10 @@ class StepTwoScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              "Write your reviews",
+              style: TextStyle(fontSize: 16),
+            ),
             const Text("Step 2 / 2", style: TextStyle(color: Color.fromRGBO(113, 49, 0, 1))),
             const SizedBox(height: 8),
             const Text(
@@ -22,9 +26,13 @@ class StepTwoScreen extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 16),
+            const Text(
+              "Short title",
+              style: TextStyle(fontSize: 16),
+            ),
             const TextField(
               decoration: InputDecoration(
-                labelText: 'Short title',
+
                 hintText: 'e.g. No one is giving Luxor pens',
                 border: OutlineInputBorder(),
               ),
