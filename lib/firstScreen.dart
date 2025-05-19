@@ -69,7 +69,7 @@ class _StepOneScreenState extends State<StepOneScreen> {
                 Text(
                   option['label']!,
                   style: TextStyle(
-                    color: selectedOption == option['label'] ? Colors.white : Colors.black,
+                    color: selectedOption == option['label'] ? Color.fromRGBO(113,49,0,1) : Colors.black,
                   ),
                 ),
               ],
@@ -86,7 +86,7 @@ class _StepOneScreenState extends State<StepOneScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text('Write your reviews'),
+
         leading: const BackButton(),
       ),
       body: Padding(
@@ -94,6 +94,10 @@ class _StepOneScreenState extends State<StepOneScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              "Write your reviews",
+              style: TextStyle(fontSize: 16),
+            ),
             const Text("Step 1 / 2", style: TextStyle(color: Color.fromRGBO(113, 49, 0, 1))),
             const SizedBox(height: 8),
             const Text(
