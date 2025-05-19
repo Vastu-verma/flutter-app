@@ -59,7 +59,7 @@ class _StepOneScreenState extends State<StepOneScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Step 1 / 2", style: TextStyle(color: Colors.brown)),
+            const Text("Step 1 / 2", style: TextStyle(color: Color.fromRGBO(113, 49, 0, 1))),
             const SizedBox(height: 8),
             const Text(
               'Select the space you\'re facing problem in your city.',
@@ -80,7 +80,7 @@ class _StepOneScreenState extends State<StepOneScreen> {
                   padding: const EdgeInsets.all(16),
                   side: const BorderSide(color: Colors.grey),
                   backgroundColor:
-                  selectedOption == option ? Colors.brown : Colors.white,
+                  selectedOption == option ? Color.fromRGBO(113, 49, 0, 1) : Colors.white,
                 ),
                 child: Align(
                   alignment: Alignment.centerLeft,
@@ -108,7 +108,7 @@ class _StepOneScreenState extends State<StepOneScreen> {
                   padding: const EdgeInsets.all(16),
                   side: const BorderSide(color: Colors.grey),
                   backgroundColor:
-                  selectedOption == option ? Colors.brown : Colors.white,
+                  selectedOption == option ? Color.fromRGBO(113, 49, 0, 1) : Colors.white,
                 ),
                 child: Align(
                   alignment: Alignment.centerLeft,
@@ -132,7 +132,7 @@ class _StepOneScreenState extends State<StepOneScreen> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.brown,
+                  backgroundColor:Color.fromRGBO(113, 49, 0, 1),
                   foregroundColor: Colors.white,
                 ),
                 child: const Text("Next"),
@@ -159,7 +159,7 @@ class StepTwoScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Step 2 / 2", style: TextStyle(color: Colors.brown)),
+            const Text("Step 2 / 2", style: TextStyle(color: Color.fromRGBO(113, 49, 0, 1))),
             const SizedBox(height: 8),
             const Text(
               "Give info about the issue you're facing",
@@ -194,7 +194,7 @@ class StepTwoScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.brown,
+                  backgroundColor: Color.fromRGBO(113, 49, 0, 1),
                   foregroundColor: Colors.white,
                 ),
                 child: const Text("Submit Complaint"),
