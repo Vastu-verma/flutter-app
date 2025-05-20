@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:app_first/secondScreen.dart';
 
@@ -56,11 +55,12 @@ class _StepOneScreenState extends State<StepOneScreen> {
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.all(16),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20), // Adjust radius as needed
+                borderRadius: BorderRadius.circular(20),
               ),
               side: const BorderSide(color: Colors.grey),
-              backgroundColor:
-              selectedOption == option['label'] ? Color.fromRGBO(255,232,215,1) : Colors.white,
+              backgroundColor: selectedOption == option['label']
+                  ? const Color.fromRGBO(255, 232, 215, 1)
+                  : Colors.white,
             ),
             child: Row(
               children: [
@@ -69,7 +69,9 @@ class _StepOneScreenState extends State<StepOneScreen> {
                 Text(
                   option['label']!,
                   style: TextStyle(
-                    color: selectedOption == option['label'] ? Color.fromRGBO(113,49,0,1) : Colors.black,
+                    color: selectedOption == option['label']
+                        ? const Color.fromRGBO(113, 49, 0, 1)
+                        : Colors.black,
                   ),
                 ),
               ],
@@ -89,60 +91,73 @@ class _StepOneScreenState extends State<StepOneScreen> {
         leading: const BackButton(),
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: MediaQuery.of(context).size.height - kToolbarHeight - MediaQuery.of(context).padding.top,
-              ),
-              child: IntrinsicHeight(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
                       "Write your reviews",
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    const Text("Step 1 / 2", style: TextStyle(color: Color.fromRGBO(113, 49, 0, 1))),
+                    const Text(
+                      "Step 1 / 2",
+                      style: TextStyle(color: Color.fromRGBO(113, 49, 0, 1)),
+                    ),
                     const SizedBox(height: 8),
                     const Text(
                       'Select the space you\'re facing problem in your city.',
                       style: TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 16),
-                    const Text('Shops', style: TextStyle(fontWeight: FontWeight.bold)),
+                    const Text(
+                      'Shops',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     const SizedBox(height: 8),
                     buildOptionList(shopOptions),
                     const SizedBox(height: 16),
-                    const Text('Food Area', style: TextStyle(fontWeight: FontWeight.bold)),
+                    const Text(
+                      'Food Area',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     const SizedBox(height: 8),
                     buildOptionList(foodOptions),
-                    const Spacer(),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: selectedOption != null
-                            ? () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const StepTwoScreen()),
-                          );
-                        }
-                            : null,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(113, 49, 0, 1),
-                          foregroundColor: Colors.white,
-                        ),
-                        child: const Text("Next"),
-                      ),
-                    ),
                   ],
                 ),
               ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: selectedOption != null
+                      ? () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const StepTwoScreen(),
+                      ),
+                    );
+                  }
+                      : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(113, 49, 0, 1),
+                    foregroundColor: Colors.white,
+                  ),
+                  child: const Text("Next"),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
+}
