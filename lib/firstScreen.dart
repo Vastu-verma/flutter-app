@@ -86,54 +86,63 @@ class _StepOneScreenState extends State<StepOneScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-
         leading: const BackButton(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "Write your reviews",
-              style: TextStyle(fontSize: 20),
-            ),
-            const Text("Step 1 / 2", style: TextStyle(color: Color.fromRGBO(113, 49, 0, 1))),
-            const SizedBox(height: 8),
-            const Text(
-              'Select the space you\'re facing problem in your city.',
-              style: TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 16),
-            const Text('Shops', style: TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
-            buildOptionList(shopOptions),
-            const SizedBox(height: 16),
-            const Text('Food Area', style: TextStyle(fontWeight: FontWeight.bold)),
-            const SizedBox(height: 8),
-            buildOptionList(foodOptions),
-            const Spacer(),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: selectedOption != null
-                    ? () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const StepTwoScreen()),
-                  );
-                }
-                    : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(113, 49, 0, 1),
-                  foregroundColor: Colors.white,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: MediaQuery.of(context).size.height - kToolbarHeight - MediaQuery.of(context).padding.top,
+              ),
+              child: IntrinsicHeight(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Write your reviews",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    const Text("Step 1 / 2", style: TextStyle(color: Color.fromRGBO(113, 49, 0, 1))),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Select the space you\'re facing problem in your city.',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    const SizedBox(height: 16),
+                    const Text('Shops', style: TextStyle(fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 8),
+                    buildOptionList(shopOptions),
+                    const SizedBox(height: 16),
+                    const Text('Food Area', style: TextStyle(fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 8),
+                    buildOptionList(foodOptions),
+                    const Spacer(),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: selectedOption != null
+                            ? () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const StepTwoScreen()),
+                          );
+                        }
+                            : null,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromRGBO(113, 49, 0, 1),
+                          foregroundColor: Colors.white,
+                        ),
+                        child: const Text("Next"),
+                      ),
+                    ),
+                  ],
                 ),
-                child: const Text("Next"),
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
   }
-}
