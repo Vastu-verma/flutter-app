@@ -23,7 +23,7 @@ class StepTwoScreen extends StatelessWidget {
                   children: [
                     const Text(
                       "Write your reviews",
-                      style: TextStyle(fontSize: 20,
+                      style: TextStyle(fontSize: 32,
                       fontWeight:FontWeight.bold,
                       ),
                     ),
