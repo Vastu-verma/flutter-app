@@ -96,7 +96,7 @@ class _StepOneScreenState extends State<StepOneScreen> {
           children: [
             const Text(
               "Write your reviews",
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 20),
             ),
             const Text("Step 1 / 2", style: TextStyle(color: Color.fromRGBO(113, 49, 0, 1))),
             const SizedBox(height: 8),

@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Review App',
       theme: ThemeData(
+        fontFamily: 'GeneralSans',
         primarySwatch: Colors.brown,
       ),
       home:  StepOneScreen(),
